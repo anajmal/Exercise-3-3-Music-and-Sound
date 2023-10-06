@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://sp64y2eqbd63"]
+[gd_scene load_steps=18 format=3 uid="uid://sp64y2eqbd63"]
 
 [ext_resource type="Script" path="res://Brick/Brick_Container.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://cfb204qt38vvo" path="res://Paddle/Paddle.tscn" id="2"]
+[ext_resource type="Script" path="res://Ball/Comet_Container.gd" id="2_hqo46"]
 [ext_resource type="Script" path="res://Ball/Ball_Container.gd" id="3"]
 [ext_resource type="Script" path="res://Game.gd" id="4"]
 [ext_resource type="PackedScene" uid="uid://bna1k8dkka5xx" path="res://UI/Pause_Menu.tscn" id="5"]
@@ -9,6 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://cb6abwxodebx1" path="res://UI/HUD.tscn" id="7"]
 [ext_resource type="PackedScene" uid="uid://d03l3yccdo8fa" path="res://UI/Instructions.tscn" id="8"]
 [ext_resource type="Script" path="res://Effects/Camera.gd" id="9"]
+[ext_resource type="AudioStream" uid="uid://da82efssxk81" path="res://Assets/Wall.wav" id="10_o1d4f"]
+[ext_resource type="AudioStream" uid="uid://byf2vsyl2v38k" path="res://Assets/music.mp3" id="11_ajf8k"]
+[ext_resource type="AudioStream" uid="uid://cj38ggklgb7g5" path="res://Assets/brick.wav" id="12_fbx1b"]
+[ext_resource type="AudioStream" uid="uid://f0osmod6p022" path="res://Assets/paddle.wav" id="13_pscsl"]
+[ext_resource type="AudioStream" uid="uid://pddjts2gsxks" path="res://Assets/die2.wav" id="14_vqy4t"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(200, 1000)
@@ -18,6 +24,9 @@ size = Vector2(1224, 200)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("4")
+
+[node name="Comet_Container" type="Node2D" parent="."]
+script = ExtResource("2_hqo46")
 
 [node name="Wall_Container" type="Node2D" parent="."]
 
@@ -74,3 +83,20 @@ visible = false
 [node name="Camera" type="Camera2D" parent="."]
 anchor_mode = 0
 script = ExtResource("9")
+
+[node name="Wall_Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_o1d4f")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_ajf8k")
+volume_db = -61.813
+autoplay = true
+
+[node name="Brick_Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_fbx1b")
+
+[node name="Paddle_Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_pscsl")
+
+[node name="Die_Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_vqy4t")
